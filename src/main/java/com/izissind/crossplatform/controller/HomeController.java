@@ -1,9 +1,7 @@
 package com.izissind.crossplatform.controller;
 
-import com.izissind.crossplatform.dto.ErrorDto;
 import com.izissind.crossplatform.dto.LoginDto;
 import com.izissind.crossplatform.dto.UserDto;
-import com.izissind.crossplatform.model.UserEntity;
 import com.izissind.crossplatform.service.DataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +24,15 @@ public class HomeController {
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDto> loginController(@RequestBody LoginDto loginDto) {
+
+        if(loginDto == null || loginDto.getUsername().isBlank() || loginDto.getPassword().isBlank()) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Username and password are required");
+        }
+
+        // Fake auth
+        if(!loginDto.getPassword().equals("pass")) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Wrong password");
+        }
 
         try {
             UserDto userEntity = dataService.getUser(loginDto);

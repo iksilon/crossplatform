@@ -57,4 +57,9 @@ public class DataServiceImpl implements DataService {
 
         gameRepository.save(gameEntity);
     }
+
+    @Override
+    public void removeGame(int idGame) {
+        gameRepository.deleteById(idGame);
+    }
 }

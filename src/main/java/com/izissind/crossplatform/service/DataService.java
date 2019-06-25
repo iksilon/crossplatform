@@ -12,4 +12,5 @@ public interface DataService {
     List<PlatformDto> getAllPlatforms();
 
     void addGame(AddGameDto addGameDto);
+    void removeGame(int idGame);
 }
