@@ -6,9 +6,10 @@
     <session-factory>
         <property name="connection.url">jdbc:mysql://localhost:3306/db_crossplatform</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <mapping resource="permap.xml"/>
         <mapping class="com.izissind.crossplatform.model.PlatformEntity"/>
         <mapping class="com.izissind.crossplatform.model.UserEntity"/>
-        <mapping resource="permap.xml"/>
+        <mapping class="com.izissind.crossplatform.model.GameEntity"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 

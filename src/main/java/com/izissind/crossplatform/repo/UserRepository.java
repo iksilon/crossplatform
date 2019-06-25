@@ -4,7 +4,6 @@ import com.izissind.crossplatform.model.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
-
-    public UserEntity findByUsernameLike(String username);
-
+    UserEntity findByUsername(String username);
+    UserEntity findByIdUser(int id);
 }

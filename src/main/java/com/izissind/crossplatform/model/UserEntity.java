@@ -1,6 +1,7 @@
 package com.izissind.crossplatform.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -8,9 +9,10 @@ import java.util.Objects;
 public class UserEntity {
     private int idUser;
     private String username;
+    private Collection<GameEntity> gamesByIdUser;
 
     @Id
-    @Column(name = "idUser", nullable = false)
+    @Column(name = "idUser")
     public int getIdUser() {
         return idUser;
     }
@@ -20,7 +22,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "username", nullable = false, length = 255)
+    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -41,5 +43,14 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(idUser, username);
+    }
+
+    @OneToMany(mappedBy = "userByIdUser")
+    public Collection<GameEntity> getGamesByIdUser() {
+        return gamesByIdUser;
+    }
+
+    public void setGamesByIdUser(Collection<GameEntity> gamesByIdUser) {
+        this.gamesByIdUser = gamesByIdUser;
     }
 }
